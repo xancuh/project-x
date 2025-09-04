@@ -1,0 +1,22 @@
+{
+  "serverRuntimeConfig": {
+    "backend": {}
+  },
+  "publicRuntimeConfig": {
+    "backend": {
+      "proxyEnabled": true,
+      "flags": {
+        "myAccountPage2016Enabled": true,
+        "catalogGenreFilterSupported": true,
+        "catalogPageLimit": 28,
+        "catalogSaleCountVisibleFromDetailsEndpoint": true,
+        "catalogDetailsPageResellerLimit": 10,
+        "avatarPageInventoryLimit": 10,
+        "catalogDetailsPageOwnersTabEnabled": true
+
+      },
+      "baseUrl": "https://projex.zip",
+      "apiFormat": "https://projex.zip//apisite/{0}{1}"
+    }
+  }
+}

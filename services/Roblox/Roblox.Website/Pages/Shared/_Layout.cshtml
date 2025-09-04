@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="en" class="h-100">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
+    <link rel="icon" type="image/x-icon" href="https://cdn.discordapp.com/attachments/1133860217537450165/1134504172432138331/favicon.ico">
+    @await RenderSectionAsync("MetaTags", required: false)
+</head>
+<style>
+  .white-button {
+    background-color: white;
+    color: black;
+  }
+  body.bg-dark {
+    background-color: #121212;
+  }
+p.text-danger {
+  color: red;
+}
+p {
+  color: #FFFFFF;
+}
+.alert-danger {
+    --bs-alert-color: #121212;
+    --bs-alert-bg: #ff0017;
+    --bs-alert-border-color: #121212;
+    --bs-alert-link-color: #121212;
+}
+.alert {
+    --bs-alert-bg: transparent;
+    --bs-alert-padding-x: 1rem;
+    --bs-alert-padding-y: 1rem;
+    --bs-alert-margin-bottom: 1rem;
+    --bs-alert-color: inherit;
+    --bs-alert-border-color: transparent;
+    --bs-alert-border: var(--bs-border-width) solid #121212;
+    --bs-alert-border-radius: var(--bs-border-radius);
+    --bs-alert-link-color: inherit;
+    position: relative;
+    padding: var(--bs-alert-padding-y) var(--bs-alert-padding-x);
+    margin-bottom: var(--bs-alert-margin-bottom);
+    color: #121212;
+    background-color: #ff0000;
+    border: var(--bs-alert-border);
+    border-radius: var(--bs-alert-border-radius);
+}
+.card {
+    --bs-card-spacer-y: 1rem;
+    --bs-card-spacer-x: 1rem;
+    --bs-card-title-spacer-y: 0.5rem;
+    --bs-card-title-color: ;
+    --bs-card-subtitle-color: ;
+    --bs-card-border-width: var(--bs-border-width);
+    --bs-card-border-color: var(--bs-border-color-translucent);
+    --bs-card-border-radius: var(--bs-border-radius);
+    --bs-card-box-shadow: ;
+    --bs-card-inner-border-radius: calc(var(--bs-border-radius) - (var(--bs-border-width)));
+    --bs-card-cap-padding-y: 0.5rem;
+    --bs-card-cap-padding-x: 1rem;
+    --bs-card-cap-bg: rgba(var(--bs-body-color-rgb), 0.03);
+    --bs-card-cap-color: ;
+    --bs-card-height: ;
+    --bs-card-color: ;
+    --bs-card-bg: #212121;
+    --bs-card-img-overlay-padding: 1rem;
+    --bs-card-group-margin: 0.75rem;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    height: var(--bs-card-height);
+    color: #FFFFFF;
+    word-wrap: break-word;
+    background-color: var(--bs-card-bg);
+    background-clip: border-box;
+    border: var(--bs-card-border-width) solid var(--bs-card-border-color);
+    border-radius: var(--bs-card-border-radius);
+}
+</style>
+<body class="d-flex flex-column h-100" style="background-color: #121212; color: white;">
+    <nav class="navbar navbar-expand-lg navbar-light border-bottom" style="background-color: #121212;">
+        <div class="container-fluid">
+	    <button class="navbar-toggler white-button" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+  		<span class="navbar-toggler-icon"></span>
+	    </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/login">Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/credits">Credits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="https://discord.gg/n3dXAZQSu8">Discord</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/tos">Terms of Service</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/privacy">Privacy</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/auth/account-deletion">Account Deletion</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    @if (Model.isAuthenticated)
+{
+    <nav class="navbar navbar-expand-lg navbar-dark navbar-auth border-bottom pt-0 pb-0" style="background-color: #121212;">
+        <div class="container-fluid">
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/home">Roblox Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/updates">Client Updates</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/migrate-to-application">Migrate to Application</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/membership">Membership Type</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/collectibles?userId=@Model.userSession.userId">My Limiteds</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/promocodes">Promocodes</a>
+                    <li class="nav-item">
+                        <a class="nav-link text-white" href="/internal/invite">Invites</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+}
+    <main class="flex-shrink-0">
+        @RenderBody()
+    </main>
+    <footer class="footer mt-auto py-3" style="background-color: #121212;">
+        <div class="container">
+            <p class="text">This website is not affiliated, endorsed, and/or sponsored by any companies, trademarks, or copyrighted names mentioned. No copyright infringement is intended.</p>
+            <p class="text" style="color: white;" class="fw-bold">&copy; @DateTime.UtcNow.Year Project X</p>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
+</body>
+</html>

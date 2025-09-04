@@ -1,0 +1,32 @@
+@page "/auth/ticket"
+@model Roblox.Website.Pages.Auth.Ticket
+
+@{
+    Layout = "Shared/_Layout";
+}
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-12 col-lg-6 offset-lg-3">
+            <div class="card card-body">
+                <h3>Support Ticket</h3>
+                <p>Fill out the form below to open a support ticket. After completing the form, you will be given a URL to view the status of your ticket.</p>
+                @if (Model.errorMessage != null)
+                {
+                    <p class="text-danger">@Model.errorMessage</p>
+                }
+                <div class="mt-4">
+                    <form method="post">
+                        <input type="hidden" name="action" value="SubmitNewTicket" />
+                        <input maxlength="100" type="text" name="subject" class="form-control" placeholder="Subject" />
+                        <textarea maxlength="1000" name="body" rows="8" class="form-control w-100 mt-2" placeholder="Ticket body. Include details that may be relevant, such as your account username, your browser, specific URLs, etc."></textarea>
+                                           <div class="cf-turnstile mt-4" data-sitekey="0x4AAAAAAAGxGNyODrj2Yy38" data-theme="dark"><iframe src="https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/rcv0/0/ibcuz/0x4AAAAAAAC466jOS1uYa9NM/light/normal" allow="cross-origin-isolated" sandbox="allow-same-origin allow-scripts allow-popups" id="cf-chl-widget-ibcuz" tabindex="0" title="Widget containing a Cloudflare security challenge" style="border: none; overflow: hidden; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial; width: 0px; height: 65px;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-dashlane-rid="85d7806ddf96c7eb" data-form-type="other" data-dashlane-frameid="234"></iframe></div>
+                        @Html.AntiForgeryToken()
+                        <input class="btn btn-primary" type="submit" value="Submit" id="login-submit"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>

@@ -1,0 +1,23 @@
+@page "/auth/captcha"
+@model Roblox.Website.Pages.Auth.Captcha
+
+@{
+    Layout = "Shared/_Layout";
+}
+<div class="container mt-4 mb-4">
+    <div class="row">
+        <div class="col-12 col-lg-6 offset-lg-3">
+            <div class="card card-body">
+                <h3>Captcha Required</h3>
+                <p>Please complete the captcha below to gain access to the rest of this website. Sorry for the inconvenience.</p>
+                <form class="mt-4" method="post">
+                    <div class="cf-turnstile mt-4" data-sitekey="0x4AAAAAAAGxGNyODrj2Yy38" data-theme="dark"></div>
+                    <input type="submit" class="btn btn-primary"/>
+                    @Html.AntiForgeryToken()
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>

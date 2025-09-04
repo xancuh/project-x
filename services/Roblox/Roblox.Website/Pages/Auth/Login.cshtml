@@ -1,0 +1,55 @@
+@page "/auth/login"
+@model Roblox.Website.Pages.Auth.Login
+
+@{
+    Layout = "Shared/_Layout";
+}
+
+<div class="container mt-4">
+    @if (string.IsNullOrEmpty(Model.applicationId))
+    {
+        <div class="row">
+            <div class="col-12">
+                <div class="alert alert-warning">
+                    <p class="mb-0 text-danger" style="color: white !important;"><span class="fw-bolder">Warning:</span> No application ID is set. If your application was approved, or you signed up with an invite URL, you can ignore this message.</p>
+                </div>
+            </div>
+        </div>
+    }
+    <div class="row">
+        <div class="col-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <div class="card card-body">
+                <h2 style="color: #FFFFFF">Login</h2>
+                @if (Model.applicationId != null)
+                {
+                    <p>If you do not have an account, you can <a href="/auth/signup?applicationId=@Model.applicationId">create one here</a>.</p>
+                }
+                else
+                {
+		    <p style="color: #ffffff">If you do not have an account, you can <a href="/auth/application">create one here</a></p>
+                }
+                @if (Model.errorMessage != null)
+                {
+                    <p class="text-danger">@Model.errorMessage</p>
+                }
+                <form method="post">
+                    <input disabled="@Model.loginDisabled" type="text" placeholder="Username" name="username" class="form-control mb-1"/>
+                    <input disabled="@Model.loginDisabled" type="password" placeholder="Password" name="password" class="form-control mb-1"/>
+                    @if (Model.applicationId != null)
+                    {
+                        <input type="hidden" name="applicationId" value="@Model.applicationId"/>
+                    }
+                    @if (Model.resetPasswordEnabled)
+                    {
+                        <p><a href="/auth/password-reset">Reset Password</a></p>
+                    }
+                    <div class="cf-turnstile mt-4" data-sitekey="0x4AAAAAAAGxGNyODrj2Yy38" data-theme="dark"><iframe src="https://challenges.cloudflare.com/cdn-cgi/challenge-platform/h/g/turnstile/if/ov2/av0/rcv0/0/ibcuz/0x4AAAAAAAC466jOS1uYa9NM/light/normal" allow="cross-origin-isolated" sandbox="allow-same-origin allow-scripts allow-popups" id="cf-chl-widget-ibcuz" tabindex="0" title="Widget containing a Cloudflare security challenge" style="border: none; overflow: hidden; --darkreader-inline-border-top: initial; --darkreader-inline-border-right: initial; --darkreader-inline-border-bottom: initial; --darkreader-inline-border-left: initial; width: 0px; height: 65px;" data-darkreader-inline-border-top="" data-darkreader-inline-border-right="" data-darkreader-inline-border-bottom="" data-darkreader-inline-border-left="" data-dashlane-rid="85d7806ddf96c7eb" data-form-type="other" data-dashlane-frameid="234"></iframe></div>
+                    @Html.AntiForgeryToken()
+                    <input disabled="@Model.loginDisabled" class="btn btn-primary" type="submit" value="Login" id="login-submit"/>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js?onload=onloadTurnstileCallback" defer></script>
